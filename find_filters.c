@@ -74,13 +74,7 @@ int __execute(char* path) {
         int status;
         pid = fork();
         if (pid == 0) {
-            char** args = (char**) malloc(1 * sizeof(char*));
-            if (!args) {
-                perror("find: allocation error");
-                exit(EXIT_FAILURE);
-            }
-            args[0] = path;
-            if (execve(__exec_name, args, NULL)) {
+            if (execl(__exec_name, __exec_name, path, NULL)) {
                 fprintf(stderr, "find: '%s': ", path);
                 perror("");
             }
