@@ -62,6 +62,7 @@ int __add_entries(char* path) {
             }
         }
     }
+    if (close(fd) == -1) FIND_SOFT_ERROR("file descriptor close error")
     return EXIT_SUCCESS;
 }
 
